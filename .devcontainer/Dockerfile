@@ -6,4 +6,4 @@ RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir poetry
 COPY pyproject.toml poetry.lock ./
-RUN poetry install --with test --no-root
+RUN poetry config virtualenvs.create false && poetry install --with test --no-root
