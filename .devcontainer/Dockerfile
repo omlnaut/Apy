@@ -4,5 +4,6 @@ WORKDIR /workspace
 
 RUN apt update && apt install -y git && rm -rf /var/lib/apt/lists/*
 
-COPY requirements requirements
-RUN pip install --no-cache-dir -r requirements/requirements.txt
+RUN pip install --no-cache-dir poetry
+COPY pyproject.toml poetry.lock ./
+RUN poetry install --with test --no-root

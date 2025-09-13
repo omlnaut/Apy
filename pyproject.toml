@@ -1,0 +1,22 @@
+[project]
+name = "apy"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "omlnaut",email = "oneironaut.oml@gmail.com"}
+]
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi (>=0.116.1,<0.117.0)",
+    "uvicorn[standard] (>=0.35.0,<0.36.0)",
+    "httpx (>=0.28.1,<0.29.0)",
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.4.2"
+
