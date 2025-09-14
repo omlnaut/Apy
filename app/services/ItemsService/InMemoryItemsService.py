@@ -1,4 +1,4 @@
-from app.schemas.ItemSchemas import ItemCreate
+from app.schemas.ItemSchemas import ItemCreate, ItemUpdate
 
 
 class InMemoryItemsService:
@@ -9,7 +9,7 @@ class InMemoryItemsService:
     async def get_items(self) -> list[dict]:
         return list(self._items_db.values())
 
-    async def get_item(self, item_id: int, user_id: int) -> dict | None:
+    async def get_item(self, item_id: int) -> dict | None:
         return self._items_db.get(item_id)
 
     async def create_item(self, item_create: ItemCreate) -> dict:
@@ -21,7 +21,7 @@ class InMemoryItemsService:
         self._items_db[self._id_counter] = item
         return item
 
-    async def update_item(self, item_id: int, item_update: ItemCreate) -> dict | None:
+    async def update_item(self, item_id: int, item_update: ItemUpdate) -> dict | None:
         if item_id not in self._items_db:
             return None
 
