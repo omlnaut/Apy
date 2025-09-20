@@ -5,12 +5,16 @@ description = ""
 authors = [
     {name = "omlnaut",email = "oneironaut.oml@gmail.com"}
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.12,<4.0"
 dependencies = [
     "fastapi (>=0.116.1,<0.117.0)",
     "uvicorn[standard] (>=0.35.0,<0.36.0)",
     "httpx (>=0.28.1,<0.29.0)",
     "pytest-asyncio (>=1.2.0,<2.0.0)",
+    "sqlalchemy[asyncio] (>=2.0.43,<3.0.0)",
+    "alembic (>=1.16.5,<2.0.0)",
+    "asyncpg (>=0.30.0,<0.31.0)",
+    "testcontainers[postgresql] (>=4.13.0,<5.0.0)",
 ]
 
 
