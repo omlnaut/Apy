@@ -1,0 +1,29 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: ..
+      dockerfile: .devcontainer/Dockerfile
+    volumes:
+      - ../..:/workspaces:cached
+    command: sleep infinity
+    depends_on:
+      - db
+    environment:
+      # Inside the container, reach Postgres by service name `db`
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgres@db:5432/fastapi_dev
+    ports:
+      - "8000:8000"   # FastAPI
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: fastapi_dev
+    ports:
+      - "5432:5432"   # Optional: expose to host (psql/GUI)
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
